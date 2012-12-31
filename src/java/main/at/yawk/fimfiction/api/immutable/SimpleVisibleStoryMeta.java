@@ -5,28 +5,30 @@ import at.yawk.fimfiction.api.Category;
 import at.yawk.fimfiction.api.Chapter;
 import at.yawk.fimfiction.api.Character;
 import at.yawk.fimfiction.api.ContentRating;
+import at.yawk.fimfiction.api.MatureCategory;
 import at.yawk.fimfiction.api.StoryStatus;
 import at.yawk.fimfiction.api.VisibleStoryMeta;
 
 public class SimpleVisibleStoryMeta implements VisibleStoryMeta {
-	private final String		description;
-	private final String		title;
-	private final Chapter[]		chapters;
-	private final String		imageLocation;
-	private final String		fullImageLocation;
-	private final int			maximumChapterViews;
-	private final int			totalViews;
-	private final int			commentAmount;
-	private final Author		author;
-	private final StoryStatus	storyStatus;
-	private final ContentRating	contentRating;
-	private final int			likes;
-	private final int			dislikes;
-	private final int			words;
-	private final Category[]	categories;
-	private final Character[]	characters;
+	private final String			title;
+	private final Chapter[]			chapters;
+	private final String			imageLocation;
+	private final String			fullImageLocation;
+	private final int				maximumChapterViews;
+	private final int				totalViews;
+	private final int				commentAmount;
+	private final Author			author;
+	private final StoryStatus		storyStatus;
+	private final ContentRating		contentRating;
+	private final int				likes;
+	private final int				dislikes;
+	private final int				words;
+	private final Category[]		categories;
+	private final Character[]		characters;
+	private final MatureCategory[]	matureCategories;
+	private final String			description;
 	
-	public SimpleVisibleStoryMeta(String description, String title, Chapter[] chapters, String imageLocation, String fullImageLocation, int maximumChapterViews, int totalViews, int commentAmount, Author author, StoryStatus storyStatus, ContentRating contentRating, int likes, int dislikes, int words, Category[] categories, Character[] characters) {
+	public SimpleVisibleStoryMeta(String description, String title, Chapter[] chapters, String imageLocation, String fullImageLocation, int maximumChapterViews, int totalViews, int commentAmount, Author author, StoryStatus storyStatus, ContentRating contentRating, int likes, int dislikes, int words, Category[] categories, Character[] characters, MatureCategory[] matureCategories) {
 		this.description = description;
 		this.title = title;
 		this.chapters = chapters;
@@ -43,6 +45,7 @@ public class SimpleVisibleStoryMeta implements VisibleStoryMeta {
 		this.words = words;
 		this.categories = categories;
 		this.characters = characters;
+		this.matureCategories = matureCategories;
 	}
 	
 	@Override
@@ -123,5 +126,10 @@ public class SimpleVisibleStoryMeta implements VisibleStoryMeta {
 	@Override
 	public Character[] getCharacters() {
 		return characters;
+	}
+	
+	@Override
+	public MatureCategory[] getMatureCategories() {
+		return matureCategories;
 	}
 }

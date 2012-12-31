@@ -20,7 +20,7 @@ public final class ImmutableHelper {
 	}
 	
 	public static StoryMeta getCurrentData(StoryMeta meta) {
-		return new SimpleStoryMeta(meta.getDescription(), meta.getShortDescription(), meta.getTitle(), Arrays.copyOf(meta.getChapters(), meta.getChapters().length), new Date(meta.getModificationDate().getTime()), meta.getImageLocation(), meta.getFullImageLocation(), meta.getMaximumChapterViews(), meta.getTotalViews(), meta.getCommentAmount(), meta.getAuthor(), meta.getStoryStatus(), meta.getContentRating(), meta.getLikes(), meta.getDislikes(), meta.getWords(), Arrays.copyOf(meta.getCategories(), meta.getCategories().length), Arrays.copyOf(meta.getCharacters(), meta.getCharacters().length));
+		return new SimpleStoryMeta(meta.getDescription(), meta.getShortDescription(), meta.getTitle(), Arrays.copyOf(meta.getChapters(), meta.getChapters().length), new Date(meta.getModificationDate().getTime()), meta.getImageLocation(), meta.getFullImageLocation(), meta.getMaximumChapterViews(), meta.getTotalViews(), meta.getCommentAmount(), meta.getAuthor(), meta.getStoryStatus(), meta.getContentRating(), meta.getLikes(), meta.getDislikes(), meta.getWords(), Arrays.copyOf(meta.getCategories(), meta.getCategories().length), Arrays.copyOf(meta.getCharacters(), meta.getCharacters().length), meta.getMatureCategories());
 	}
 	
 	public static Author getCurrentData(Author author) {

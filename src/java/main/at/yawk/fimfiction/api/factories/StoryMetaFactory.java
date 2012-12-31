@@ -7,29 +7,31 @@ import at.yawk.fimfiction.api.Category;
 import at.yawk.fimfiction.api.Chapter;
 import at.yawk.fimfiction.api.Character;
 import at.yawk.fimfiction.api.ContentRating;
+import at.yawk.fimfiction.api.MatureCategory;
 import at.yawk.fimfiction.api.StoryMeta;
 import at.yawk.fimfiction.api.StoryStatus;
 import at.yawk.fimfiction.api.immutable.ImmutableHelper;
 
 public class StoryMetaFactory implements StoryMeta {
-	private String			description;
-	private String			shortDescription;
-	private String			title;
-	private Chapter[]		chapters;
-	private Date			modificationDate;
-	private String			imageLocation;
-	private String			fullImageLocation;
-	private int				maximumChapterViews;
-	private int				totalViews;
-	private int				commentAmount;
-	private Author			author;
-	private StoryStatus		storyStatus;
-	private ContentRating	contentRating;
-	private int				likes;
-	private int				dislikes;
-	private int				words;
-	private Character[]		characters;
-	private Category[]		categories;
+	private String				description;
+	private String				shortDescription;
+	private String				title;
+	private Chapter[]			chapters;
+	private Date				modificationDate;
+	private String				imageLocation;
+	private String				fullImageLocation;
+	private int					maximumChapterViews;
+	private int					totalViews;
+	private int					commentAmount;
+	private Author				author;
+	private StoryStatus			storyStatus;
+	private ContentRating		contentRating;
+	private int					likes;
+	private int					dislikes;
+	private int					words;
+	private Character[]			characters;
+	private Category[]			categories;
+	private MatureCategory[]	matureCategories;
 	
 	@Override
 	public String getDescription() {
@@ -195,5 +197,14 @@ public class StoryMetaFactory implements StoryMeta {
 	
 	public void setCategories(Category[] categories) {
 		this.categories = categories;
+	}
+	
+	@Override
+	public MatureCategory[] getMatureCategories() {
+		return matureCategories;
+	}
+
+	public void setMatureCategories(MatureCategory[] matureCategories) {
+		this.matureCategories = matureCategories;
 	}
 }
