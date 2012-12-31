@@ -1,5 +1,10 @@
 package at.yawk.fimfiction.api;
 
+/**
+ * The characters
+ * @author Yawkat
+ *
+ */
 public enum Character {
 	TWILIGHT_SPARKLE(7, "Twilight Sparkle", "http://www.fimfiction-static.net/images/characters/twilight_sparkle.png"),
 	RAINBOW_DASH(8, "Rainbow Dash", "http://www.fimfiction-static.net/images/characters/rainbow_dash.png"),
@@ -105,18 +110,31 @@ public enum Character {
 		this.imageWidth = imageWidth;
 	}
 	
+	/**
+	 * @return The character ID, used in search GET requests
+	 */
 	public int getId() {
 		return id;
 	}
 	
+	/**
+	 * @return The character's display name
+	 */
 	public String getDisplayName() {
 		return displayName;
 	}
 	
+	/**
+	 * @return The character icon location
+	 */
 	public String getImageLocation() {
 		return imageLocation;
 	}
 	
+	/**
+	 * The character icon width is typically 16px, some icons have 32px, though. Height is always 16px.
+	 * @return The character icon width
+	 */
 	public int getImageWidth() {
 		return imageWidth;
 	}

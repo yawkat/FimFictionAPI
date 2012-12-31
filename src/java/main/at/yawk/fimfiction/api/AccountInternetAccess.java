@@ -7,10 +7,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+/**
+ * Basic support for cookies and logging into FIMFiction accounts
+ * 
+ * @author Yawkat
+ * 
+ */
 public class AccountInternetAccess extends SimpleInternetAccess implements MatureInternetAccess, AccountInterface {
 	private Map<String, String>	cookies		= new HashMap<String, String>();
 	private boolean				isLoggedIn	= false;
-
+	
 	public AccountInternetAccess(InternetAccess parentAccess) {
 		super(parentAccess);
 	}
@@ -36,6 +42,8 @@ public class AccountInternetAccess extends SimpleInternetAccess implements Matur
 		try {
 			final URLConnection urlc = connect(new URL(URLs.LOGIN));
 			urlc.connect();
+			System.out.println(URLs.LOGIN);
+			System.out.println("username=" + username + "&password=" + password);
 			urlc.getOutputStream().write(("username=" + username + "&password=" + password).getBytes());
 			urlc.getOutputStream().flush();
 			final char c = (char)(urlc.getInputStream().read());

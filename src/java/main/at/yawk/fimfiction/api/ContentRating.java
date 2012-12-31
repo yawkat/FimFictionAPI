@@ -1,5 +1,10 @@
 package at.yawk.fimfiction.api;
 
+/**
+ * Content rating. Mature content rating is not shown in searches if the mature flag is disabled.
+ * @author Yawkat
+ *
+ */
 public enum ContentRating {
 	ALL(-1),
 	EVERYONE(0),
@@ -25,6 +30,12 @@ public enum ContentRating {
 			ids[cr.getSearchRequestIdentifier() - MINIMUM_ID] = cr;
 	}
 	
+	/**
+	 * Get a content rating for a given ID
+	 * @param id
+	 * @return the content rating
+	 * @throws ArrayIndexOutOfBoundsException if the id is invalid
+	 */
 	public static ContentRating parse(int id) {
 		return ids[id - MINIMUM_ID];
 	}
