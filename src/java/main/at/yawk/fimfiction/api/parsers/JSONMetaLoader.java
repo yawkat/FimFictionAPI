@@ -18,7 +18,7 @@ import at.yawk.fimfiction.api.ContentRating;
 import at.yawk.fimfiction.api.Identifier;
 import at.yawk.fimfiction.api.InternetAccess;
 import at.yawk.fimfiction.api.InvalidStoryException;
-import at.yawk.fimfiction.api.StoryMeta;
+import at.yawk.fimfiction.api.JSONStoryMeta;
 import at.yawk.fimfiction.api.StoryStatus;
 import at.yawk.fimfiction.api.URLs;
 import at.yawk.fimfiction.api.factories.StoryMetaFactory;
@@ -26,7 +26,7 @@ import at.yawk.fimfiction.api.immutable.SimpleAuthor;
 import at.yawk.fimfiction.api.immutable.SimpleChapter;
 
 public class JSONMetaLoader {
-	public static StoryMeta getStoryMeta(Identifier i, InternetAccess internet) throws IOException, ParseException, InvalidStoryException {
+	public static JSONStoryMeta getStoryMeta(Identifier i, InternetAccess internet) throws IOException, ParseException, InvalidStoryException {
 		final JSONObject story = (JSONObject)((JSONObject)new JSONParser().parse(new InputStreamReader(internet.connect(new URL(URLs.API_BASE + i.getId())).getInputStream()))).get("story");
 		if(story == null)
 			throw new InvalidStoryException("Story " + i.getId() + " does not exist");

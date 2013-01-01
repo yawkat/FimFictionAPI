@@ -10,7 +10,7 @@ import org.json.simple.parser.ParseException;
 
 import at.yawk.fimfiction.api.Identifier;
 import at.yawk.fimfiction.api.InternetAccess;
-import at.yawk.fimfiction.api.StoryMeta;
+import at.yawk.fimfiction.api.JSONStoryMeta;
 import at.yawk.fimfiction.api.immutable.EmptyStory;
 import at.yawk.fimfiction.api.parsers.JSONMetaLoader;
 
@@ -55,10 +55,10 @@ public class StoryMetadataCache {
 		return getCurrentInstance(defaultAccess, DEFAULT_MAXIMUM_THREADS);
 	}
 	
-	private final Map<Identifier, StoryMeta>	metadata	= new HashMap<Identifier, StoryMeta>();
-	private final InternetAccess				internet;
+	private final Map<Identifier, JSONStoryMeta>	metadata	= new HashMap<Identifier, JSONStoryMeta>();
+	private final InternetAccess					internet;
 	
-	private final Executor						downloader;
+	private final Executor							downloader;
 	
 	/**
 	 * @param internet
@@ -111,7 +111,7 @@ public class StoryMetadataCache {
 	 *            The ID
 	 * @return The metadata
 	 */
-	public StoryMeta getFinalStoryMeta(Identifier id) {
+	public JSONStoryMeta getFinalStoryMeta(Identifier id) {
 		if(!metadata.containsKey(id))
 			updateStoryMeta(id);
 		return metadata.get(id);
@@ -125,7 +125,7 @@ public class StoryMetadataCache {
 	 *            The ID
 	 * @return The metadata or <code>null</code> if it has not been loaded yet.
 	 */
-	public StoryMeta getStoryMetaAsync(Identifier id) {
+	public JSONStoryMeta getStoryMetaAsync(Identifier id) {
 		if(metadata.get(id) == null) {
 			if(!metadata.containsKey(id))
 				updateStoryMetaAsync(id);
