@@ -1,3 +1,3 @@
 FimFictionAPI
 =============
-An API of many functions of FIMFiction.net .
+An API of many functions of http://FIMFiction.net/.
