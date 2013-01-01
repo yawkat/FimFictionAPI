@@ -10,6 +10,12 @@ import at.yawk.fimfiction.api.MatureCategory;
 import at.yawk.fimfiction.api.SearchOrder;
 import at.yawk.fimfiction.api.SearchRequest;
 
+/**
+ * A simple, immutable search request
+ * 
+ * @author Yawkat
+ * 
+ */
 public class SimpleSearchRequest implements SearchRequest {
 	private final String					searchTerm;
 	private final SearchOrder				searchOrder;

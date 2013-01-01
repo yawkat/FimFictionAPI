@@ -11,8 +11,14 @@ import at.yawk.fimfiction.api.MatureCategory;
 import at.yawk.fimfiction.api.StoryMeta;
 import at.yawk.fimfiction.api.StoryStatus;
 
+/**
+ * A simple, immutable story metadata
+ * 
+ * @author Yawkat
+ * 
+ */
 public class SimpleStoryMeta extends SimpleJSONStoryMeta implements StoryMeta {
-	private final Character[]	characters;
+	private final Character[]		characters;
 	private final MatureCategory[]	matureCategories;
 	
 	public SimpleStoryMeta(String description, String shortDescription, String title, Chapter[] chapters, Date modificationDate, String imageLocation, String fullImageLocation, int maximumChapterViews, int totalViews, int commentAmount, Author author, StoryStatus storyStatus, ContentRating contentRating, int likes, int dislikes, int words, Category[] categories, Character[] characters, MatureCategory[] matureCategories) {
@@ -25,7 +31,7 @@ public class SimpleStoryMeta extends SimpleJSONStoryMeta implements StoryMeta {
 	public Character[] getCharacters() {
 		return characters;
 	}
-
+	
 	@Override
 	public MatureCategory[] getMatureCategories() {
 		return matureCategories;

@@ -12,6 +12,11 @@ public final class SearchUtil {
 		
 	}
 	
+	/**
+	 * Convert a request to a GET string
+	 * @param request The request
+	 * @return The GET string
+	 */
 	public static String getSearchGet(SearchRequest request) {
 		try {
 			final StringBuilder sb = new StringBuilder();

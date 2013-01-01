@@ -9,6 +9,12 @@ import at.yawk.fimfiction.api.ContentRating;
 import at.yawk.fimfiction.api.JSONStoryMeta;
 import at.yawk.fimfiction.api.StoryStatus;
 
+/**
+ * A simple, immutable JSON story metadata
+ * 
+ * @author Yawkat
+ * 
+ */
 public class SimpleJSONStoryMeta implements JSONStoryMeta {
 	private final String		description;
 	private final String		shortDescription;
@@ -27,7 +33,7 @@ public class SimpleJSONStoryMeta implements JSONStoryMeta {
 	private final int			dislikes;
 	private final int			words;
 	private final Category[]	categories;
-
+	
 	public SimpleJSONStoryMeta(String description, String shortDescription, String title, Chapter[] chapters, Date modificationDate, String imageLocation, String fullImageLocation, int maximumChapterViews, int totalViews, int commentAmount, Author author, StoryStatus storyStatus, ContentRating contentRating, int likes, int dislikes, int words, Category[] categories) {
 		this.description = description;
 		this.shortDescription = shortDescription;
@@ -47,7 +53,7 @@ public class SimpleJSONStoryMeta implements JSONStoryMeta {
 		this.words = words;
 		this.categories = categories;
 	}
-
+	
 	@Override
 	public String getDescription() {
 		return description;
@@ -127,7 +133,7 @@ public class SimpleJSONStoryMeta implements JSONStoryMeta {
 	public int getWords() {
 		return words;
 	}
-
+	
 	@Override
 	public Category[] getCategories() {
 		return categories;

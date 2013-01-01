@@ -1,5 +1,10 @@
 package at.yawk.fimfiction.api;
 
+/**
+ * All URLs used in the API, for easy access.
+ * 
+ * @author Yawkat
+ */
 public class URLs {
 	public static final String	FIMFICTION			= "http://www.fimfiction.net/";
 	public static final String	FIMFICTION_STATIC	= "http://www.fimfiction-static.net/";

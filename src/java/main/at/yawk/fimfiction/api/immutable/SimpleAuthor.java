@@ -2,6 +2,12 @@ package at.yawk.fimfiction.api.immutable;
 
 import at.yawk.fimfiction.api.Author;
 
+/**
+ * A simple, immutable author
+ * 
+ * @author Yawkat
+ * 
+ */
 public class SimpleAuthor extends SimpleIdentifier implements Author {
 	private final String	name;
 	

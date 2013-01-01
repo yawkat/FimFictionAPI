@@ -4,6 +4,12 @@ import java.util.Date;
 
 import at.yawk.fimfiction.api.Chapter;
 
+/**
+ * A simple, immutable chapter
+ * 
+ * @author Yawkat
+ * 
+ */
 public class SimpleChapter extends SimpleIdentifier implements Chapter {
 	private final String	title;
 	private final int		words;

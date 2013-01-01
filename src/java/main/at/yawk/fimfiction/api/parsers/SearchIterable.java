@@ -12,6 +12,14 @@ import at.yawk.fimfiction.api.SearchOrder;
 import at.yawk.fimfiction.api.SearchRequest;
 import at.yawk.fimfiction.api.immutable.ImmutableHelper;
 
+/**
+ * An iterable over a search request
+ * 
+ * @author Yawkat
+ * 
+ * @param <S>
+ *            The type of data that is read
+ */
 public abstract class SearchIterable<S extends Identifier> implements SearchRequest, Iterable<S> {
 	private final SearchRequest		request;
 	private final InternetAccess	internet;

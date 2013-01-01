@@ -2,8 +2,14 @@ package at.yawk.fimfiction.api.immutable;
 
 import at.yawk.fimfiction.api.Identifier;
 
+/**
+ * A simple, immutable ID
+ * 
+ * @author Yawkat
+ * 
+ */
 public class SimpleIdentifier implements Identifier {
-	private final int id;
+	private final int	id;
 	
 	public SimpleIdentifier(int id) {
 		this.id = id;
@@ -22,7 +28,7 @@ public class SimpleIdentifier implements Identifier {
 	public int hashCode() {
 		return getId();
 	}
-
+	
 	@Override
 	public int compareTo(Identifier o) {
 		return Integer.compare(this.getId(), o.getId());

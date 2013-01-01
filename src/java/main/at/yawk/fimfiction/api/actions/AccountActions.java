@@ -7,6 +7,7 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.io.IOUtils;
 import org.htmlparser.Node;
 import org.htmlparser.lexer.Lexer;
 import org.htmlparser.nodes.TagNode;
@@ -16,11 +17,29 @@ import at.yawk.fimfiction.api.Identifier;
 import at.yawk.fimfiction.api.InternetAccess;
 import at.yawk.fimfiction.api.URLs;
 
+/**
+ * Any actions that can be performed using an account
+ * 
+ * @author Yawkat
+ * 
+ */
 public final class AccountActions {
 	private AccountActions() {
 		
 	}
 	
+	/**
+	 * Mark a story as read later
+	 * 
+	 * @param story
+	 *            The story ID
+	 * @param readlater
+	 *            The flag
+	 * @param access
+	 *            The internet access
+	 * @throws IOException
+	 *             If anything goes wrong with the connection
+	 */
 	public static void setReadLater(Identifier story, boolean readlater, InternetAccess access) throws IOException {
 		final URLConnection c = access.connect(new URL(URLs.READLATER));
 		c.connect();
@@ -28,6 +47,20 @@ public final class AccountActions {
 		clear(c.getInputStream());
 	}
 	
+	/**
+	 * Mark a story as favorite
+	 * 
+	 * @param story
+	 *            The story ID
+	 * @param favorite
+	 *            The favorite flag
+	 * @param emailNotification
+	 *            Whether an e-mail notification should be sent for any updates
+	 * @param access
+	 *            The internet access
+	 * @throws IOException
+	 *             If anything goes wrong
+	 */
 	public static void setFavorite(Identifier story, boolean favorite, boolean emailNotification, InternetAccess access) throws IOException {
 		final URLConnection c = access.connect(new URL(URLs.FAVORITE));
 		c.connect();
@@ -35,13 +68,38 @@ public final class AccountActions {
 		clear(c.getInputStream());
 	}
 	
-	public static void toggleUnread(Identifier chapter, InternetAccess access) throws IOException {
+	/**
+	 * FIMFiction does not support setting the read status but provides a toggle
+	 * only.
+	 * 
+	 * @param chapter
+	 *            The chapter ID
+	 * @param access
+	 *            The internet access
+	 * @return <code>true</code> if the chapter is now marked as read
+	 * @throws IOException
+	 *             if anything goes wrong
+	 */
+	public static boolean toggleUnread(Identifier chapter, InternetAccess access) throws IOException {
 		final URLConnection c = access.connect(new URL(URLs.READLATER));
 		c.connect();
 		c.getOutputStream().write(("chapter=" + chapter.getId()).getBytes());
-		clear(c.getInputStream());
+		return new String(IOUtils.toByteArray(c.getInputStream())).trim().endsWith("tick.png");
 	}
 	
+	/**
+	 * @param story
+	 *            The story ID
+	 * @param access
+	 *            The internet access
+	 * @return A boolean array containing the read status of all chapters
+	 *         individually
+	 * @throws IOException
+	 *             If any connection problems occur
+	 * @throws ParserException
+	 *             If any parse problems occur (probably to outdated API
+	 *             version)
+	 */
 	public static boolean[] getHasRead(final Identifier story, final InternetAccess access) throws IOException, ParserException {
 		final List<Boolean> l = new ArrayList<Boolean>();
 		final Lexer parser = new Lexer(access.connect(new URL(URLs.STORY + story.getId())));
@@ -65,6 +123,23 @@ public final class AccountActions {
 		return ab;
 	}
 	
+	/**
+	 * FIMFiction does not support un-liking a story again, as soon as you like
+	 * or unlike it you can only set it back to the opposite.
+	 * 
+	 * @param story
+	 *            The story ID
+	 * @param isLike
+	 *            <code>true</code> for like, <code>false</code> for dislike
+	 * @param token
+	 *            The like token
+	 * @param access
+	 *            The internet access
+	 * @throws IOException
+	 *             If any connection errors occur
+	 * @see AccountActions#getLikeToken(Identifier, InternetAccess)
+	 * @see AccountActions#setLike(Identifier, boolean, InternetAccess)
+	 */
 	public static void setLike(Identifier story, boolean isLike, String token, InternetAccess access) throws IOException {
 		final URLConnection c = access.connect(new URL(URLs.FAVORITE));
 		c.connect();
@@ -72,6 +147,20 @@ public final class AccountActions {
 		clear(c.getInputStream());
 	}
 	
+	/**
+	 * Load a like token for a given story. It is unknown when this token gets
+	 * changed.
+	 * 
+	 * @param story
+	 *            The story ID
+	 * @param access
+	 *            The internet access
+	 * @return The token
+	 * @throws ParserException
+	 *             If any parsing errors occur (due to an outdated API)
+	 * @throws IOException
+	 *             If any connection errors occur
+	 */
 	public static String getLikeToken(Identifier story, InternetAccess access) throws ParserException, IOException {
 		final Lexer parser = new Lexer(access.connect(new URL(URLs.STORY + story.getId())));
 		Node n;
@@ -87,6 +176,22 @@ public final class AccountActions {
 		return null;
 	}
 	
+	/**
+	 * Convenience method for setting the like flag without token.
+	 * 
+	 * @param story
+	 *            The story ID
+	 * @param isLike
+	 *            <code>true</code> for like, <code>false</code> for dislike
+	 * @param access
+	 *            The internet access
+	 * @throws ParserException
+	 *             If any parsing errors occur (due to an outdated API)
+	 * @throws IOException
+	 *             If any connection errors occur
+	 * @see AccountActions#getLikeToken(Identifier, InternetAccess)
+	 * @see AccountActions#setLike(Identifier, boolean, String, InternetAccess)
+	 */
 	public static void setLike(Identifier story, boolean isLike, InternetAccess access) throws IOException, ParserException {
 		setLike(story, isLike, getLikeToken(story, access), access);
 	}

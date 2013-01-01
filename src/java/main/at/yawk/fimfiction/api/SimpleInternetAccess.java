@@ -4,6 +4,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
 
+/**
+ * An internet access that only supports a mature flag, but no accounts.
+ * 
+ * @author Yawkat
+ */
 public class SimpleInternetAccess implements MatureInternetAccess {
 	private boolean					mature	= true;
 	private final InternetAccess	parentAccess;

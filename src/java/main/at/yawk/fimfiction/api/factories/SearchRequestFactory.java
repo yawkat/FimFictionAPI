@@ -11,6 +11,11 @@ import at.yawk.fimfiction.api.SearchOrder;
 import at.yawk.fimfiction.api.SearchRequest;
 import at.yawk.fimfiction.api.immutable.ImmutableHelper;
 
+/**
+ * A mutable search request.
+ * 
+ * @author Yawkat
+ */
 public class SearchRequestFactory implements SearchRequest {
 	private String					searchTerm		= "";
 	private SearchOrder				searchOrder		= SearchOrder.FIRST_POSTED_DATE;
@@ -29,6 +34,11 @@ public class SearchRequestFactory implements SearchRequest {
 		return searchTerm;
 	}
 	
+	/**
+	 * @param searchTerm
+	 *            The new search term
+	 * @return This object
+	 */
 	public SearchRequestFactory setSearchTerm(String searchTerm) {
 		this.searchTerm = searchTerm;
 		return this;
@@ -38,6 +48,11 @@ public class SearchRequestFactory implements SearchRequest {
 		return searchOrder;
 	}
 	
+	/**
+	 * @param searchOrder
+	 *            The new search order
+	 * @return This object
+	 */
 	public SearchRequestFactory setSearchOrder(SearchOrder searchOrder) {
 		this.searchOrder = searchOrder;
 		return this;
@@ -47,6 +62,11 @@ public class SearchRequestFactory implements SearchRequest {
 		return categories;
 	}
 	
+	/**
+	 * @param categories
+	 *            The new categories
+	 * @return This object
+	 */
 	public SearchRequestFactory setCategories(Map<Category, Boolean> categories) {
 		this.categories = categories;
 		return this;
@@ -56,6 +76,11 @@ public class SearchRequestFactory implements SearchRequest {
 		return contentRating;
 	}
 	
+	/**
+	 * @param contentRating
+	 *            The new content rating
+	 * @return This object
+	 */
 	public SearchRequestFactory setContentRating(ContentRating contentRating) {
 		this.contentRating = contentRating;
 		return this;
@@ -65,6 +90,11 @@ public class SearchRequestFactory implements SearchRequest {
 		return matureCategory;
 	}
 	
+	/**
+	 * @param matureCategory
+	 *            The new mature category
+	 * @return This object
+	 */
 	public SearchRequestFactory setMatureCategory(MatureCategory matureCategory) {
 		this.matureCategory = matureCategory;
 		return this;
@@ -74,6 +104,11 @@ public class SearchRequestFactory implements SearchRequest {
 		return completed;
 	}
 	
+	/**
+	 * @param completed
+	 *            The new completed flag
+	 * @return This object
+	 */
 	public SearchRequestFactory setCompleted(boolean completed) {
 		this.completed = completed;
 		return this;
@@ -83,6 +118,11 @@ public class SearchRequestFactory implements SearchRequest {
 		return minimumWords;
 	}
 	
+	/**
+	 * @param minimumWords
+	 *            The new minimum word count or <code>null</code> to ignore
+	 * @return This object
+	 */
 	public SearchRequestFactory setMinimumWords(Integer minimumWords) {
 		this.minimumWords = minimumWords;
 		return this;
@@ -92,6 +132,11 @@ public class SearchRequestFactory implements SearchRequest {
 		return maximumWords;
 	}
 	
+	/**
+	 * @param maximumWords
+	 *            The new maximum word count or <code>null</code> to ignore
+	 * @return This object
+	 */
 	public SearchRequestFactory setMaximumWords(Integer maximumWords) {
 		this.maximumWords = maximumWords;
 		return this;
@@ -101,6 +146,11 @@ public class SearchRequestFactory implements SearchRequest {
 		return characters;
 	}
 	
+	/**
+	 * @param characters
+	 *            The new characters
+	 * @return This object
+	 */
 	public SearchRequestFactory setCharacters(Map<Character, Boolean> characters) {
 		this.characters = characters;
 		return this;
@@ -110,6 +160,11 @@ public class SearchRequestFactory implements SearchRequest {
 		return unread;
 	}
 	
+	/**
+	 * @param unread
+	 *            The new unread flag
+	 * @return This object
+	 */
 	public SearchRequestFactory setUnread(boolean unread) {
 		this.unread = unread;
 		return this;
@@ -119,6 +174,11 @@ public class SearchRequestFactory implements SearchRequest {
 		return favorite;
 	}
 	
+	/**
+	 * @param favorite
+	 *            The new favorite flag
+	 * @return This object
+	 */
 	public SearchRequestFactory setFavorite(boolean favorite) {
 		this.favorite = favorite;
 		return this;
@@ -128,11 +188,19 @@ public class SearchRequestFactory implements SearchRequest {
 		return readLater;
 	}
 	
+	/**
+	 * @param readLater
+	 *            The new read later flag
+	 * @return This object
+	 */
 	public SearchRequestFactory setReadLater(boolean readLater) {
 		this.readLater = readLater;
 		return this;
 	}
 	
+	/**
+	 * @return An immutable copy of the current data stored in this object
+	 */
 	public SearchRequest getCurrentData() {
 		return ImmutableHelper.getCurrentData(this);
 	}

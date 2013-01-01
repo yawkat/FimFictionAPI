@@ -9,6 +9,12 @@ import at.yawk.fimfiction.api.MatureCategory;
 import at.yawk.fimfiction.api.StoryStatus;
 import at.yawk.fimfiction.api.VisibleStoryMeta;
 
+/**
+ * A simple, immutable visible story meta
+ * 
+ * @author Yawkat
+ * 
+ */
 public class SimpleVisibleStoryMeta implements VisibleStoryMeta {
 	private final String			title;
 	private final Chapter[]			chapters;

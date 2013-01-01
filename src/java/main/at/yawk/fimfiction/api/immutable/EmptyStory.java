@@ -13,6 +13,12 @@ import at.yawk.fimfiction.api.Story;
 import at.yawk.fimfiction.api.StoryMeta;
 import at.yawk.fimfiction.api.StoryStatus;
 
+/**
+ * An empty story with default not-null data
+ * 
+ * @author Yawkat
+ * 
+ */
 public final class EmptyStory extends SimpleIdentifier implements Story, Identifier, StoryMeta, Comparable<Identifier>, Cloneable {
 	private static final Chapter[]			EMPTY_CHAPTER_ARRAY		= new Chapter[0];
 	private static final Date				EMPTY_DATE				= new Date(0);
