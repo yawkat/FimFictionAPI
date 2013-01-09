@@ -11,10 +11,12 @@ import java.net.URLConnection;
  * @author Yawkat
  */
 public interface InternetAccess {
-	/**
-	 * @param url The target URL
-	 * @return The connection
-	 * @throws IOException If connecting fails
-	 */
-	public URLConnection connect(URL url) throws IOException;
+    /**
+     * @param url
+     *            The target URL
+     * @return The connection
+     * @throws IOException
+     *             If connecting fails
+     */
+    public URLConnection connect(URL url) throws IOException;
 }

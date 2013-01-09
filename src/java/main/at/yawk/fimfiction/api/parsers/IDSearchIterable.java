@@ -14,12 +14,12 @@ import at.yawk.fimfiction.api.util.SearchUtil;
  * 
  */
 public class IDSearchIterable extends SearchIterable<Identifier> {
-	public IDSearchIterable(SearchRequest request, InternetAccess internet) {
-		super(request, internet);
-	}
-	
-	@Override
-	public Iterator<Identifier> iterator() {
-		return new IDSearchIterator(SearchUtil.getSearchGet(getSearchRequest()), getInternet());
-	}
+    public IDSearchIterable(SearchRequest request, InternetAccess internet) {
+        super(request, internet);
+    }
+    
+    @Override
+    public Iterator<Identifier> iterator() {
+        return new IDSearchIterator(SearchUtil.getSearchGet(getSearchRequest()), getInternet());
+    }
 }

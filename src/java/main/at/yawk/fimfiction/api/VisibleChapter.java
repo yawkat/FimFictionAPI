@@ -6,5 +6,5 @@ package at.yawk.fimfiction.api;
  * @author Yawkat
  */
 public interface VisibleChapter extends VisibleChapterMeta, Identifier {
-	
+    
 }

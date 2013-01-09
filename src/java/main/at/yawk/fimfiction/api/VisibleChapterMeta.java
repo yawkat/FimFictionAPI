@@ -7,13 +7,13 @@ package at.yawk.fimfiction.api;
  * 
  */
 public interface VisibleChapterMeta {
-	/**
-	 * @return The chapter title
-	 */
-	public String getTitle();
-	
-	/**
-	 * @return The amount of words in this chapter
-	 */
-	public int getWords();
+    /**
+     * @return The chapter title
+     */
+    public String getTitle();
+    
+    /**
+     * @return The amount of words in this chapter
+     */
+    public int getWords();
 }

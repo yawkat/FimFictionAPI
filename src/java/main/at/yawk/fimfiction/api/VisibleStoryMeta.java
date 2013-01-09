@@ -7,16 +7,16 @@ package at.yawk.fimfiction.api;
  * 
  */
 public interface VisibleStoryMeta extends GeneralStoryMeta {
-	/**
-	 * @return The main characters that appear in the story
-	 */
-	public Character[] getCharacters();
-	
-	/**
-	 * Can be either <code>[]</code>, <code>[SEX]</code>, <code>[GORE]</code>,
-	 * <code>[SEX, GORE]</code> or <code>[GORE, SEX]</code>
-	 * 
-	 * @return The mature categories that have been assigned to this story
-	 */
-	public MatureCategory[] getMatureCategories();
+    /**
+     * @return The main characters that appear in the story
+     */
+    public Character[] getCharacters();
+    
+    /**
+     * Can be either <code>[]</code>, <code>[SEX]</code>, <code>[GORE]</code>,
+     * <code>[SEX, GORE]</code> or <code>[GORE, SEX]</code>
+     * 
+     * @return The mature categories that have been assigned to this story
+     */
+    public MatureCategory[] getMatureCategories();
 }

@@ -18,22 +18,22 @@ import at.yawk.fimfiction.api.StoryStatus;
  * 
  */
 public class SimpleStoryMeta extends SimpleJSONStoryMeta implements StoryMeta {
-	private final Character[]		characters;
-	private final MatureCategory[]	matureCategories;
-	
-	public SimpleStoryMeta(String description, String shortDescription, String title, Chapter[] chapters, Date modificationDate, String imageLocation, String fullImageLocation, int maximumChapterViews, int totalViews, int commentAmount, Author author, StoryStatus storyStatus, ContentRating contentRating, int likes, int dislikes, int words, Category[] categories, Character[] characters, MatureCategory[] matureCategories) {
-		super(description, shortDescription, title, chapters, modificationDate, imageLocation, fullImageLocation, maximumChapterViews, totalViews, commentAmount, author, storyStatus, contentRating, likes, dislikes, words, categories);
-		this.characters = characters;
-		this.matureCategories = matureCategories;
-	}
-	
-	@Override
-	public Character[] getCharacters() {
-		return characters;
-	}
-	
-	@Override
-	public MatureCategory[] getMatureCategories() {
-		return matureCategories;
-	}
+    private final Character[]      characters;
+    private final MatureCategory[] matureCategories;
+    
+    public SimpleStoryMeta(String description, String shortDescription, String title, Chapter[] chapters, Date modificationDate, String imageLocation, String fullImageLocation, int maximumChapterViews, int totalViews, int commentAmount, Author author, StoryStatus storyStatus, ContentRating contentRating, int likes, int dislikes, int words, Category[] categories, Character[] characters, MatureCategory[] matureCategories) {
+        super(description, shortDescription, title, chapters, modificationDate, imageLocation, fullImageLocation, maximumChapterViews, totalViews, commentAmount, author, storyStatus, contentRating, likes, dislikes, words, categories);
+        this.characters = characters;
+        this.matureCategories = matureCategories;
+    }
+    
+    @Override
+    public Character[] getCharacters() {
+        return characters;
+    }
+    
+    @Override
+    public MatureCategory[] getMatureCategories() {
+        return matureCategories;
+    }
 }

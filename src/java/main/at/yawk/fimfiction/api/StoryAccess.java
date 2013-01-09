@@ -10,7 +10,7 @@ package at.yawk.fimfiction.api;
  *            The type of story meta to be accessed
  */
 public interface StoryAccess<M extends GeneralStoryMeta> extends Identifier {
-	public Identifier getIdentifier();
-	
-	public M getMeta();
+    public Identifier getIdentifier();
+    
+    public M getMeta();
 }

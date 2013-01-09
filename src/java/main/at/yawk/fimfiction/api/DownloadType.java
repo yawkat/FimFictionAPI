@@ -7,7 +7,7 @@ package at.yawk.fimfiction.api;
  * 
  */
 public enum DownloadType {
-	TXT,
-	HTML,
-	EPUB
+    TXT,
+    HTML,
+    EPUB
 }
