@@ -132,7 +132,7 @@ public enum Character {
 	}
 	
 	/**
-	 * The character icon width is typically 16px, some icons have 32px, though. Height is always 16px.
+	 * The character icon width is typically 32px, some icons have 64px, though. Height is always 32px.
 	 * @return The character icon width
 	 */
 	public int getImageWidth() {
