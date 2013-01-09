@@ -94,26 +94,26 @@ public enum Character {
 	ORIGINAL_CHARACTER(49, "Original Character", "http://www.fimfiction-static.net/images/characters/oc.png"),
 	OTHER(62, "Other", "http://www.fimfiction-static.net/images/characters/other.png");
 	
-	private final int		id;
+	private final byte		id;
 	private final String	displayName;
 	private final String	imageLocation;
-	private final int		imageWidth;
+	private final byte		imageWidth;
 	
 	private Character(final int id, final String displayName, final String imageUrl) {
 		this(id, displayName, imageUrl, 32);
 	}
 	
 	private Character(final int id, final String displayName, final String imageLocation, final int imageWidth) {
-		this.id = id;
+		this.id = (byte)id;
 		this.displayName = displayName;
 		this.imageLocation = imageLocation;
-		this.imageWidth = imageWidth;
+		this.imageWidth = (byte)imageWidth;
 	}
 	
 	/**
 	 * @return The character ID, used in search GET requests
 	 */
-	public int getId() {
+	public byte getId() {
 		return id;
 	}
 	
@@ -135,7 +135,7 @@ public enum Character {
 	 * The character icon width is typically 32px, some icons have 64px, though. Height is always 32px.
 	 * @return The character icon width
 	 */
-	public int getImageWidth() {
+	public byte getImageWidth() {
 		return imageWidth;
 	}
 }
