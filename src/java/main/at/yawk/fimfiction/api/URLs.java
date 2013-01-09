@@ -21,4 +21,7 @@ public class URLs {
 	public static final String	DOWNLOAD_TXT		= FIMFICTION_DOWNLOAD + "story.php?story=";
 	public static final String	DOWNLOAD_HTML		= FIMFICTION_DOWNLOAD + "story.php?html&story=";
 	public static final String	DOWNLOAD_EPUB		= FIMFICTION_DOWNLOAD + "epub.php?story=";
+	public static final String	DOWNLOAD_CHAPTER_TXT= FIMFICTION_DOWNLOAD + "chapter.php?chapter=";
+	public static final String	DOWNLOAD_CHAPTER_HTML= FIMFICTION_DOWNLOAD + "chapter.php?html&chapter=";
+	
 }
