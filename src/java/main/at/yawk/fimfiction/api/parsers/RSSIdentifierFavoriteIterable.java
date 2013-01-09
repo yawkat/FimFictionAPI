@@ -17,14 +17,14 @@ import at.yawk.fimfiction.api.URLs;
 import at.yawk.fimfiction.api.immutable.SimpleIdentifier;
 
 public class RSSIdentifierFavoriteIterable implements Iterable<Identifier> {
-	private final String			url;
+	private final String	     url;
 	private final InternetAccess	internet;
 	
 	public RSSIdentifierFavoriteIterable(Identifier userId, InternetAccess internet) {
 		this.url = URLs.RSS_FAVORITE + userId.getId();
 		this.internet = internet;
 	}
-
+	
 	@Override
 	public Iterator<Identifier> iterator() {
 		try {
