@@ -80,4 +80,59 @@ public final class Downloader {
 		downloadStory(story, os, dlType, internet);
 		os.close();
 	}
+	
+	/**
+	 * Download a Chapter
+	 * 
+	 * @param story
+	 *            The story ID
+	 * @param output
+	 *            The output stream
+	 * @param dlType
+	 *            The download type, EPUB is not supported
+	 * @param internet
+	 *            The internet access
+	 * @throws IOException
+	 *             If a connection exception occurs
+	 */
+	public static void downloadChapter(Identifier chapter, OutputStream output, DownloadType dlType, InternetAccess internet) throws IOException {
+		final String s;
+		switch(dlType) {
+		case EPUB:
+			throw new IllegalArgumentException("EPUB is not supported for chapters");
+		case HTML:
+			s = URLs.DOWNLOAD_CHAPTER_HTML;
+			break;
+		case TXT:
+			s = URLs.DOWNLOAD_CHAPTER_TXT;
+			break;
+		default:
+			throw new IllegalArgumentException("Unknown download type " + dlType);
+		}
+		final URLConnection c = internet.connect(new URL(s + chapter.getId()));
+		c.connect();
+		IOUtils.copy(c.getInputStream(), output);
+	}
+	
+	/**
+	 * Convenience method
+	 * 
+	 * @param story
+	 *            The story ID
+	 * @param output
+	 *            The output file
+	 * @param dlType
+	 *            The download type
+	 * @param internet
+	 *            The internet access
+	 * @throws IOException
+	 *             If a connection exception occurs
+	 * @see Downloader#downloadStory(Identifier, OutputStream, DownloadType,
+	 *      InternetAccess)
+	 */
+	public static void downloadChapter(Identifier chapter, File output, DownloadType dlType, InternetAccess internet) throws IOException {
+		final OutputStream os = new FileOutputStream(output);
+		downloadChapter(chapter, os, dlType, internet);
+		os.close();
+	}
 }
