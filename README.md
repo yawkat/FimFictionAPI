@@ -11,3 +11,7 @@ Dependencies:
 - jsoup-1.6.3
 
 All of them are on maven.
+
+Code Style:
+-----------
+Use 4 spaces instead of tabs.
