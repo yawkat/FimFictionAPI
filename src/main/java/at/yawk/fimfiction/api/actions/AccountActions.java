@@ -112,7 +112,7 @@ public final class AccountActions {
                         l.add(((TagNode)n).getAttribute("src").endsWith("tick.png"));
                         isInChapter = false;
                     }
-                } else if(((TagNode)n).getTagName().equals("DIV") && ((TagNode)n).getAttribute("class").equals("chapter_container"))
+                } else if(((TagNode)n).getTagName().equals("DIV") && "chapter_container".equals(((TagNode)n).getAttribute("class")))
                     isInChapter = true;
             }
         }
