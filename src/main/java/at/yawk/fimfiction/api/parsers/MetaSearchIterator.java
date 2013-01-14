@@ -25,7 +25,7 @@ import at.yawk.fimfiction.api.immutable.SimpleChapter;
 import at.yawk.fimfiction.api.immutable.SimpleIdentifier;
 import at.yawk.fimfiction.api.immutable.SimpleStoryAccess;
 
-class MetaSearchIterator extends XMLSearchIterator<StoryAccess<VisibleStoryMeta>> {
+public class MetaSearchIterator extends XMLSearchIterator<StoryAccess<VisibleStoryMeta>> {
     public MetaSearchIterator(String request, InternetAccess internet) {
         super(request, internet);
     }

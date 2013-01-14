@@ -10,7 +10,7 @@ import at.yawk.fimfiction.api.Identifier;
 import at.yawk.fimfiction.api.InternetAccess;
 import at.yawk.fimfiction.api.immutable.SimpleIdentifier;
 
-class IDSearchIterator extends XMLSearchIterator<Identifier> {
+public class IDSearchIterator extends XMLSearchIterator<Identifier> {
     public IDSearchIterator(String request, InternetAccess internet) {
         super(request, internet);
     }
