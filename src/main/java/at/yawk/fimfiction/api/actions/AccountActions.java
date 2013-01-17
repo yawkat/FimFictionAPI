@@ -7,7 +7,6 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.io.IOUtils;
 import org.htmlparser.Node;
 import org.htmlparser.lexer.Lexer;
 import org.htmlparser.nodes.TagNode;
@@ -84,7 +83,11 @@ public final class AccountActions {
         final URLConnection c = access.connect(new URL(URLs.READLATER));
         c.connect();
         c.getOutputStream().write(("chapter=" + chapter.getId()).getBytes());
-        return new String(IOUtils.toByteArray(c.getInputStream())).trim().endsWith("tick.png");
+        final StringBuilder sb = new StringBuilder();
+        int i;
+        while((i = c.getInputStream().read()) >= 0)
+            sb.append((char)i);
+        return sb.toString().trim().endsWith("tick.png");
     }
     
     /**

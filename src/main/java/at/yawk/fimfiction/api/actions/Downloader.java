@@ -3,11 +3,10 @@ package at.yawk.fimfiction.api.actions;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
-
-import org.apache.commons.io.IOUtils;
 
 import at.yawk.fimfiction.api.DownloadType;
 import at.yawk.fimfiction.api.Identifier;
@@ -56,7 +55,7 @@ public final class Downloader {
         }
         final URLConnection c = internet.connect(new URL(s + story.getId()));
         c.connect();
-        IOUtils.copy(c.getInputStream(), output);
+        copyStream(c.getInputStream(), output);
     }
     
     /**
@@ -111,7 +110,7 @@ public final class Downloader {
         }
         final URLConnection c = internet.connect(new URL(s + chapter.getId()));
         c.connect();
-        IOUtils.copy(c.getInputStream(), output);
+        copyStream(c.getInputStream(), output);
     }
     
     /**
@@ -134,5 +133,12 @@ public final class Downloader {
         final OutputStream os = new FileOutputStream(output);
         downloadChapter(chapter, os, dlType, internet);
         os.close();
+    }
+    
+    private static void copyStream(InputStream in, OutputStream out) throws IOException {
+        final byte[] tmp = new byte[1024];
+        int length;
+        while((length = in.read(tmp)) > 0)
+            out.write(tmp, 0, length);
     }
 }
