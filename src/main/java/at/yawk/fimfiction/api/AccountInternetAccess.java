@@ -42,8 +42,6 @@ public class AccountInternetAccess extends SimpleInternetAccess implements Matur
         try {
             final URLConnection urlc = connect(new URL(URLs.LOGIN));
             urlc.connect();
-            System.out.println(URLs.LOGIN);
-            System.out.println("username=" + username + "&password=" + password);
             urlc.getOutputStream().write(("username=" + username + "&password=" + password).getBytes());
             urlc.getOutputStream().flush();
             final char c = (char)(urlc.getInputStream().read());
