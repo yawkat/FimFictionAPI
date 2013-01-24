@@ -11,6 +11,8 @@ Dependencies:
 
 All of them are on maven.
 
+I am trying to remove most dependencies right now. HTML parsing has mostly been replaced by my own parser, YXML (https://github.com/yawkat/YXML). The lexer is needed too.
+
 Code Style:
 -----------
 Use 4 spaces instead of tabs.
