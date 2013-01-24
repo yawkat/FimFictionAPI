@@ -7,14 +7,10 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.htmlparser.Node;
-import org.htmlparser.lexer.Lexer;
-import org.htmlparser.nodes.TagNode;
-import org.htmlparser.util.ParserException;
-
 import at.yawk.fimfiction.api.Identifier;
 import at.yawk.fimfiction.api.InternetAccess;
 import at.yawk.fimfiction.api.URLs;
+import at.yawk.yxml.Lexer;
 
 /**
  * Any actions that can be performed using an account
@@ -103,19 +99,18 @@ public final class AccountActions {
      *             If any parse problems occur (probably to outdated API
      *             version)
      */
-    public static boolean[] getHasRead(final Identifier story, final InternetAccess access) throws IOException, ParserException {
+    public static boolean[] getHasRead(final Identifier story, final InternetAccess access) throws IOException {
         final List<Boolean> l = new ArrayList<Boolean>();
         final Lexer parser = new Lexer(access.connect(new URL(URLs.STORY + story.getId())));
-        Node n;
         boolean isInChapter = false;
-        while((n = parser.nextNode()) != null) {
-            if(n instanceof TagNode && !((TagNode)n).isEndTag()) {
+        while(parser.getNext()) {
+            if(parser.isTag() && !parser.isEndTagOnly()) {
                 if(isInChapter) {
-                    if(((TagNode)n).getTagName().equals("IMG") && ((TagNode)n).getAttribute("id") != null) {
-                        l.add(((TagNode)n).getAttribute("src").endsWith("tick.png"));
+                    if(parser.getLowercaseTagName().equals("img") && parser.getAttributes().containsKey("id")) {
+                        l.add(parser.getAttributes().get("src").endsWith("tick.png"));
                         isInChapter = false;
                     }
-                } else if(((TagNode)n).getTagName().equals("DIV") && "chapter_container".equals(((TagNode)n).getAttribute("class")))
+                } else if(parser.getLowercaseTagName().equals("div") && "chapter_container".equals(parser.getAttributes().get("class")))
                     isInChapter = true;
             }
         }
@@ -164,14 +159,13 @@ public final class AccountActions {
      * @throws IOException
      *             If any connection errors occur
      */
-    public static String getLikeToken(Identifier story, InternetAccess access) throws ParserException, IOException {
+    public static String getLikeToken(Identifier story, InternetAccess access) throws IOException {
         final Lexer parser = new Lexer(access.connect(new URL(URLs.STORY + story.getId())));
-        Node n;
-        while((n = parser.nextNode()) != null) {
-            if(n instanceof TagNode && !((TagNode)n).isEndTag() && ((TagNode)n).getTagName().equals("A")) {
-                final String clazz = ((TagNode)n).getAttribute("class");
+        while(parser.getNext()) {
+            if(parser.isTag() && !parser.isEndTagOnly() && parser.getLowercaseTagName().equals("a")) {
+                final String clazz = parser.getAttributes().get("class");
                 if(clazz != null && clazz.equals("like_button ")) {
-                    final String s = ((TagNode)n).getAttribute("onclick").substring(21);
+                    final String s = parser.getAttributes().get("onclick").substring(21);
                     return s.substring(0, s.indexOf('\''));
                 }
             }
@@ -195,7 +189,7 @@ public final class AccountActions {
      * @see AccountActions#getLikeToken(Identifier, InternetAccess)
      * @see AccountActions#setLike(Identifier, boolean, String, InternetAccess)
      */
-    public static void setLike(Identifier story, boolean isLike, InternetAccess access) throws IOException, ParserException {
+    public static void setLike(Identifier story, boolean isLike, InternetAccess access) throws IOException {
         setLike(story, isLike, getLikeToken(story, access), access);
     }
     

@@ -2,10 +2,9 @@ package at.yawk.fimfiction.api.parsers;
 
 import java.net.URLConnection;
 
-import org.htmlparser.lexer.Lexer;
-
 import at.yawk.fimfiction.api.Identifier;
 import at.yawk.fimfiction.api.InternetAccess;
+import at.yawk.yxml.Lexer;
 
 abstract class XMLSearchIterator<S extends Identifier> extends SearchIterator<S> {
     public XMLSearchIterator(String request, InternetAccess internet) {

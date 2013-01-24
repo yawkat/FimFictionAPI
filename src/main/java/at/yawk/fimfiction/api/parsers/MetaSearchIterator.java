@@ -1,5 +1,6 @@
 package at.yawk.fimfiction.api.parsers;
 
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,13 +26,22 @@ import at.yawk.fimfiction.api.immutable.SimpleChapter;
 import at.yawk.fimfiction.api.immutable.SimpleIdentifier;
 import at.yawk.fimfiction.api.immutable.SimpleStoryAccess;
 
-public class MetaSearchIterator extends XMLSearchIterator<StoryAccess<VisibleStoryMeta>> {
+public class MetaSearchIterator extends SearchIterator<StoryAccess<VisibleStoryMeta>> {
     public MetaSearchIterator(String request, InternetAccess internet) {
         super(request, internet);
     }
     
-    @SuppressWarnings("unchecked")
     @Override
+    protected StoryAccess<VisibleStoryMeta>[] getNextBlock(URLConnection url) {
+        try {
+            return getNextBlock(new Lexer(url));
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    @SuppressWarnings("unchecked")
     protected StoryAccess<VisibleStoryMeta>[] getNextBlock(Lexer reader) throws Exception {
         final List<StoryAccess<VisibleStoryMeta>> stories = new ArrayList<StoryAccess<VisibleStoryMeta>>();
         StoryMetaFactory currentStory = null;
