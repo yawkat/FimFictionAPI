@@ -23,7 +23,7 @@ public class WordCounter {
 		internet.login(args[0], args[1]);
 		int ind;
 		
-		final Set<Identifier> unreadFavorites = new HashSet<>();
+		final Set<Identifier> unreadFavorites = new HashSet<Identifier>();
 		ind = 0;
 		System.out.print("Stage 1.1: Downloading unread favorites: " + ind++);
 		for(Identifier i : new IDSearchIterable(new SearchRequestFactory().setUnread(true).setFavorite(true), internet)) {
@@ -32,7 +32,7 @@ public class WordCounter {
 		}
 		System.out.println("\rStage 1.1: Downloading unread favorites: done!");
 		
-		final Set<StoryAccess<VisibleStoryMeta>> favorites = new HashSet<>();
+		final Set<StoryAccess<VisibleStoryMeta>> favorites = new HashSet<StoryAccess<VisibleStoryMeta>>();
 		ind = 0;
 		System.out.print("Stage 1.2: Downloading favorites: " + ind++);
 		for(StoryAccess<VisibleStoryMeta> i : new MetaSearchIterable(new SearchRequestFactory().setFavorite(true), internet)) {
@@ -41,7 +41,7 @@ public class WordCounter {
 		}
 		System.out.println("\rStage 1.2: Downloading favorites: done!");
 		
-		final Set<StoryAccess<VisibleStoryMeta>> readlater = new HashSet<>();
+		final Set<StoryAccess<VisibleStoryMeta>> readlater = new HashSet<StoryAccess<VisibleStoryMeta>>();
 		ind = 0;
 		System.out.print("Stage 1.3: Downloading readlater: " + ind++);
 		for(StoryAccess<VisibleStoryMeta> i : new MetaSearchIterable(new SearchRequestFactory().setReadLater(true), internet)) {
@@ -51,7 +51,7 @@ public class WordCounter {
 		System.out.println("\rStage 1.3: Downloading readlater: done!");
 		
 		int totalWords = 0;
-		final Set<Identifier> checkedStories = new HashSet<>();
+		final Set<Identifier> checkedStories = new HashSet<Identifier>();
 		for(StoryAccess<VisibleStoryMeta> access : favorites) {
 			int words;
 			// Check if it contains unread chapters, if not take a shortcut
