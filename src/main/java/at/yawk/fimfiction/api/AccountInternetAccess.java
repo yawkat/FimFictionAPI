@@ -41,7 +41,6 @@ public class AccountInternetAccess extends SimpleInternetAccess implements Matur
     public boolean login(String username, String password) {
         try {
             final URLConnection urlc = connect(new URL(URLs.LOGIN));
-            urlc.connect();
             urlc.getOutputStream().write(("username=" + username + "&password=" + password).getBytes());
             urlc.getOutputStream().flush();
             final char c = (char)(urlc.getInputStream().read());
