@@ -15,6 +15,7 @@ public enum Character {
     FLUTTERSHY(12, "Fluttershy", "http://www.fimfiction-static.net/images/characters/fluttershy.png"),
     SPIKE(16, "Spike", "http://www.fimfiction-static.net/images/characters/spike.png"),
     MAIN_6(74, "Main 6", "http://www.fimfiction-static.net/images/characters/main_6.png", 64),
+    TWILICORN(94, "Twilicorn", "http://www.fimfiction-static.net/images/characters/twilicorn.png"),
     APPLE_BLOOM(13, "Apple Bloom", "http://www.fimfiction-static.net/images/characters/apple_bloom.png"),
     SCOOTALOO(14, "Scootaloo", "http://www.fimfiction-static.net/images/characters/scootaloo.png"),
     SWEETIE_BELLE(15, "Sweetie Belle", "http://www.fimfiction-static.net/images/characters/sweetie_belle.png"),
