@@ -29,16 +29,15 @@ public final class Downloader {
      * 
      * @param story
      *            The story ID
-     * @param output
-     *            The output stream
      * @param dlType
      *            The download type
      * @param internet
      *            The internet access
      * @throws IOException
      *             If a connection exception occurs
+     * @return The input stream to read from
      */
-    public static void downloadStory(Identifier story, OutputStream output, DownloadType dlType, InternetAccess internet) throws IOException {
+    public static InputStream downloadStory(Identifier story, DownloadType dlType, InternetAccess internet) throws IOException {
         final String s;
         switch(dlType) {
         case EPUB:
@@ -55,7 +54,25 @@ public final class Downloader {
         }
         final URLConnection c = internet.connect(new URL(s + story.getId()));
         c.connect();
-        copyStream(c.getInputStream(), output);
+        return c.getInputStream();
+    }
+    
+    /**
+     * Download a story
+     * 
+     * @param story
+     *            The story ID
+     * @param output
+     *            The output stream
+     * @param dlType
+     *            The download type
+     * @param internet
+     *            The internet access
+     * @throws IOException
+     *             If a connection exception occurs
+     */
+    public static void downloadStory(Identifier story, OutputStream output, DownloadType dlType, InternetAccess internet) throws IOException {
+        copyStream(downloadStory(story, dlType, internet), output);
     }
     
     /**
