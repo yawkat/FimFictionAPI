@@ -15,8 +15,8 @@ public enum MatureCategory {
     private final byte bit;
     
     private MatureCategory(int searchRequestIdentifier, int bit) {
-        this.searchRequestIdentifier = (byte)searchRequestIdentifier;
-        this.bit = (byte)bit;
+        this.searchRequestIdentifier = (byte) searchRequestIdentifier;
+        this.bit = (byte) bit;
     }
     
     /**

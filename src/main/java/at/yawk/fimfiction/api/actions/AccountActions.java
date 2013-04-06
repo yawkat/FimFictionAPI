@@ -81,8 +81,8 @@ public final class AccountActions {
         c.getOutputStream().write(("chapter=" + chapter.getId()).getBytes());
         final StringBuilder sb = new StringBuilder();
         int i;
-        while((i = c.getInputStream().read()) >= 0)
-            sb.append((char)i);
+        while ((i = c.getInputStream().read()) >= 0)
+            sb.append((char) i);
         return sb.toString().trim().endsWith("tick.png");
     }
     
@@ -103,20 +103,20 @@ public final class AccountActions {
         final List<Boolean> l = new ArrayList<Boolean>();
         final Lexer parser = new Lexer(access.connect(new URL(URLs.STORY + story.getId())));
         boolean isInChapter = false;
-        while(parser.getNext()) {
-            if(parser.isTag() && !parser.isEndTagOnly()) {
-                if(isInChapter) {
-                    if(parser.getLowercaseTagName().equals("img") && parser.getAttributes().containsKey("id")) {
+        while (parser.getNext()) {
+            if (parser.isTag() && !parser.isEndTagOnly()) {
+                if (isInChapter) {
+                    if (parser.getLowercaseTagName().equals("img") && parser.getAttributes().containsKey("id")) {
                         l.add(parser.getAttributes().get("src").endsWith("tick.png"));
                         isInChapter = false;
                     }
-                } else if(parser.getLowercaseTagName().equals("div") && "chapter_container".equals(parser.getAttributes().get("class")))
+                } else if (parser.getLowercaseTagName().equals("div") && "chapter_container".equals(parser.getAttributes().get("class")))
                     isInChapter = true;
             }
         }
         final boolean[] ab = new boolean[l.size()];
         int i = 0;
-        for(Boolean b : l)
+        for (Boolean b : l)
             ab[i++] = b;
         return ab;
     }
@@ -161,10 +161,10 @@ public final class AccountActions {
      */
     public static String getLikeToken(Identifier story, InternetAccess access) throws IOException {
         final Lexer parser = new Lexer(access.connect(new URL(URLs.STORY + story.getId())));
-        while(parser.getNext()) {
-            if(parser.isTag() && !parser.isEndTagOnly() && parser.getLowercaseTagName().equals("a")) {
+        while (parser.getNext()) {
+            if (parser.isTag() && !parser.isEndTagOnly() && parser.getLowercaseTagName().equals("a")) {
                 final String clazz = parser.getAttributes().get("class");
-                if(clazz != null && clazz.equals("like_button ")) {
+                if (clazz != null && clazz.equals("like_button ")) {
                     final String s = parser.getAttributes().get("onclick").substring(21);
                     return s.substring(0, s.indexOf('\''));
                 }
@@ -194,7 +194,7 @@ public final class AccountActions {
     }
     
     private static void clear(InputStream is) throws IOException {
-        while(is.read() >= 0)
+        while (is.read() >= 0)
             ;
     }
 }

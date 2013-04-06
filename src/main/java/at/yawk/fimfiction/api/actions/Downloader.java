@@ -39,7 +39,7 @@ public final class Downloader {
      */
     public static InputStream downloadStory(Identifier story, DownloadType dlType, InternetAccess internet) throws IOException {
         final String s;
-        switch(dlType) {
+        switch (dlType) {
         case EPUB:
             s = URLs.DOWNLOAD_EPUB;
             break;
@@ -113,7 +113,7 @@ public final class Downloader {
      */
     public static void downloadChapter(Identifier chapter, OutputStream output, DownloadType dlType, InternetAccess internet) throws IOException {
         final String s;
-        switch(dlType) {
+        switch (dlType) {
         case EPUB:
             throw new IllegalArgumentException("EPUB is not supported for chapters");
         case HTML:
@@ -155,7 +155,7 @@ public final class Downloader {
     private static void copyStream(InputStream in, OutputStream out) throws IOException {
         final byte[] tmp = new byte[1024];
         int length;
-        while((length = in.read(tmp)) > 0)
+        while ((length = in.read(tmp)) > 0)
             out.write(tmp, 0, length);
     }
 }

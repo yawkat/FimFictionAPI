@@ -14,7 +14,7 @@ import at.yawk.fimfiction.api.StoryAccess;
  */
 public class SimpleStoryAccess<M extends GeneralStoryMeta> implements StoryAccess<M> {
     private final Identifier id;
-    private final M          meta;
+    private final M meta;
     
     public SimpleStoryAccess(Identifier id, M meta) {
         this.id = id;

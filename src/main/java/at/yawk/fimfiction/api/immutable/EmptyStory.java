@@ -20,13 +20,13 @@ import at.yawk.fimfiction.api.StoryStatus;
  * 
  */
 public final class EmptyStory extends SimpleIdentifier implements Story, Identifier, StoryMeta, Comparable<Identifier>, Cloneable {
-    private static final Chapter[]        EMPTY_CHAPTER_ARRAY   = new Chapter[0];
-    private static final Date             EMPTY_DATE            = new Date(0);
-    private static final Character[]      EMPTY_CHARACTER_ARRAY = new Character[0];
-    private static final Category[]       EMPTY_CATEGORY_ARRAY  = new Category[0];
+    private static final Chapter[] EMPTY_CHAPTER_ARRAY = new Chapter[0];
+    private static final Date EMPTY_DATE = new Date(0);
+    private static final Character[] EMPTY_CHARACTER_ARRAY = new Character[0];
+    private static final Category[] EMPTY_CATEGORY_ARRAY = new Category[0];
     private static final MatureCategory[] EMPTY_MATURE_CATEGORY = new MatureCategory[0];
     
-    private static final EmptyStory       EMPTY_STORY           = new EmptyStory();
+    private static final EmptyStory EMPTY_STORY = new EmptyStory();
     
     private EmptyStory() {
         super(0);

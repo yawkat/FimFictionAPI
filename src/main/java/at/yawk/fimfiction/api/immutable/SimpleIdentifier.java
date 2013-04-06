@@ -21,7 +21,7 @@ public class SimpleIdentifier implements Identifier {
     
     @Override
     public boolean equals(Object o) {
-        return o != null && o.getClass() == this.getClass() && ((Identifier)o).getId() == this.getId();
+        return o != null && o.getClass() == this.getClass() && ((Identifier) o).getId() == this.getId();
     }
     
     @Override

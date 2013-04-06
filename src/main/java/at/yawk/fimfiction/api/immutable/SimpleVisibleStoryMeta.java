@@ -16,23 +16,23 @@ import at.yawk.fimfiction.api.VisibleStoryMeta;
  * 
  */
 public class SimpleVisibleStoryMeta implements VisibleStoryMeta {
-    private final String           title;
-    private final Chapter[]        chapters;
-    private final String           imageLocation;
-    private final String           fullImageLocation;
-    private final int              maximumChapterViews;
-    private final int              totalViews;
-    private final int              commentAmount;
-    private final Author           author;
-    private final StoryStatus      storyStatus;
-    private final ContentRating    contentRating;
-    private final int              likes;
-    private final int              dislikes;
-    private final int              words;
-    private final Category[]       categories;
-    private final Character[]      characters;
+    private final String title;
+    private final Chapter[] chapters;
+    private final String imageLocation;
+    private final String fullImageLocation;
+    private final int maximumChapterViews;
+    private final int totalViews;
+    private final int commentAmount;
+    private final Author author;
+    private final StoryStatus storyStatus;
+    private final ContentRating contentRating;
+    private final int likes;
+    private final int dislikes;
+    private final int words;
+    private final Category[] categories;
+    private final Character[] characters;
     private final MatureCategory[] matureCategories;
-    private final String           description;
+    private final String description;
     
     public SimpleVisibleStoryMeta(String description, String title, Chapter[] chapters, String imageLocation, String fullImageLocation, int maximumChapterViews, int totalViews, int commentAmount, Author author, StoryStatus storyStatus, ContentRating contentRating, int likes, int dislikes, int words, Category[] categories, Character[] characters, MatureCategory[] matureCategories) {
         this.description = description;

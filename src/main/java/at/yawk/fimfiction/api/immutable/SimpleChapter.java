@@ -12,9 +12,9 @@ import at.yawk.fimfiction.api.Chapter;
  */
 public class SimpleChapter extends SimpleIdentifier implements Chapter {
     private final String title;
-    private final int    words;
-    private final int    views;
-    private final Date   modificationDate;
+    private final int words;
+    private final int views;
+    private final Date modificationDate;
     
     public SimpleChapter(int id, String title, int words, int views, Date modificationDate) {
         super(id);

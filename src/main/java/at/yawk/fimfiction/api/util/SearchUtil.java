@@ -31,7 +31,7 @@ public final class SearchUtil {
             sb.append("&order=");
             sb.append(request.getSearchOrder().getSearchRequestIdentifier());
             
-            for(final Category ec : Category.values()) {
+            for (final Category ec : Category.values()) {
                 final Boolean b = request.getCategories().get(ec);
                 sb.append('&');
                 sb.append(ec.getSearchRequestIdentifier());
@@ -45,16 +45,16 @@ public final class SearchUtil {
             sb.append("&mature_categories=");
             sb.append(request.getMatureCategory().getSearchRequestIdentifier());
             
-            if(request.getCompleted())
+            if (request.getCompleted())
                 sb.append("&completed=1");
             
-            if(request.getFavorite())
+            if (request.getFavorite())
                 sb.append("&tracking");
             
-            if(request.getUnread())
+            if (request.getUnread())
                 sb.append("&unread");
             
-            if(request.getReadLater())
+            if (request.getReadLater())
                 sb.append("&read_it_later");
             
             sb.append("&minimum_words=");
@@ -63,16 +63,16 @@ public final class SearchUtil {
             sb.append("&maximum_words=");
             sb.append(request.getMaximumWords() == null ? "" : request.getMaximumWords());
             
-            for(final Character ec : request.getCharacters().keySet()) {
+            for (final Character ec : request.getCharacters().keySet()) {
                 final Boolean b = request.getCharacters().get(ec);
-                if(b != null) {
+                if (b != null) {
                     sb.append(b.booleanValue() ? "&characters[]=" : "&characters_execluded[]=");
                     sb.append(ec.getId());
                 }
             }
             
             return sb.toString();
-        } catch(UnsupportedEncodingException e) {
+        } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
         return null;

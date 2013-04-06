@@ -13,24 +13,24 @@ import at.yawk.fimfiction.api.StoryStatus;
 import at.yawk.fimfiction.api.immutable.ImmutableHelper;
 
 public class StoryMetaFactory implements StoryMeta {
-    private String           description;
-    private String           shortDescription;
-    private String           title;
-    private Chapter[]        chapters;
-    private Date             modificationDate;
-    private String           imageLocation;
-    private String           fullImageLocation;
-    private int              maximumChapterViews;
-    private int              totalViews;
-    private int              commentAmount;
-    private Author           author;
-    private StoryStatus      storyStatus;
-    private ContentRating    contentRating;
-    private int              likes;
-    private int              dislikes;
-    private int              words;
-    private Character[]      characters;
-    private Category[]       categories;
+    private String description;
+    private String shortDescription;
+    private String title;
+    private Chapter[] chapters;
+    private Date modificationDate;
+    private String imageLocation;
+    private String fullImageLocation;
+    private int maximumChapterViews;
+    private int totalViews;
+    private int commentAmount;
+    private Author author;
+    private StoryStatus storyStatus;
+    private ContentRating contentRating;
+    private int likes;
+    private int dislikes;
+    private int words;
+    private Character[] characters;
+    private Category[] categories;
     private MatureCategory[] matureCategories;
     
     @Override

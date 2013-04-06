@@ -31,7 +31,7 @@ public enum StoryStatus {
     private static Map<String, StoryStatus> names = new HashMap<String, StoryStatus>(values().length);
     
     static {
-        for(StoryStatus ss : values())
+        for (StoryStatus ss : values())
             names.put(ss.getName(), ss);
     }
     

@@ -18,7 +18,7 @@ import at.yawk.fimfiction.api.StoryStatus;
  * 
  */
 public class SimpleStoryMeta extends SimpleJSONStoryMeta implements StoryMeta {
-    private final Character[]      characters;
+    private final Character[] characters;
     private final MatureCategory[] matureCategories;
     
     public SimpleStoryMeta(String description, String shortDescription, String title, Chapter[] chapters, Date modificationDate, String imageLocation, String fullImageLocation, int maximumChapterViews, int totalViews, int commentAmount, Author author, StoryStatus storyStatus, ContentRating contentRating, int likes, int dislikes, int words, Category[] categories, Character[] characters, MatureCategory[] matureCategories) {

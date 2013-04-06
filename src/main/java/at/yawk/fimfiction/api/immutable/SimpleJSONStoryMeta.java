@@ -16,23 +16,23 @@ import at.yawk.fimfiction.api.StoryStatus;
  * 
  */
 public class SimpleJSONStoryMeta implements JSONStoryMeta {
-    private final String        description;
-    private final String        shortDescription;
-    private final String        title;
-    private final Chapter[]     chapters;
-    private final Date          modificationDate;
-    private final String        imageLocation;
-    private final String        fullImageLocation;
-    private final int           maximumChapterViews;
-    private final int           totalViews;
-    private final int           commentAmount;
-    private final Author        author;
-    private final StoryStatus   storyStatus;
+    private final String description;
+    private final String shortDescription;
+    private final String title;
+    private final Chapter[] chapters;
+    private final Date modificationDate;
+    private final String imageLocation;
+    private final String fullImageLocation;
+    private final int maximumChapterViews;
+    private final int totalViews;
+    private final int commentAmount;
+    private final Author author;
+    private final StoryStatus storyStatus;
     private final ContentRating contentRating;
-    private final int           likes;
-    private final int           dislikes;
-    private final int           words;
-    private final Category[]    categories;
+    private final int likes;
+    private final int dislikes;
+    private final int words;
+    private final Category[] categories;
     
     public SimpleJSONStoryMeta(String description, String shortDescription, String title, Chapter[] chapters, Date modificationDate, String imageLocation, String fullImageLocation, int maximumChapterViews, int totalViews, int commentAmount, Author author, StoryStatus storyStatus, ContentRating contentRating, int likes, int dislikes, int words, Category[] categories) {
         this.description = description;

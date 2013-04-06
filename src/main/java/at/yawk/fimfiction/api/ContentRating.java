@@ -15,10 +15,10 @@ public enum ContentRating {
     
     private static final int MINIMUM_ID = -1;
     
-    private final byte       searchRequestIdentifier;
+    private final byte searchRequestIdentifier;
     
     private ContentRating(int searchRequestIdentifier) {
-        this.searchRequestIdentifier = (byte)searchRequestIdentifier;
+        this.searchRequestIdentifier = (byte) searchRequestIdentifier;
     }
     
     public byte getSearchRequestIdentifier() {
@@ -28,7 +28,7 @@ public enum ContentRating {
     private static ContentRating[] ids = new ContentRating[values().length];
     
     static {
-        for(ContentRating cr : values())
+        for (ContentRating cr : values())
             ids[cr.getSearchRequestIdentifier() - MINIMUM_ID] = cr;
     }
     

@@ -17,15 +17,15 @@ public class IDSearchIterator extends XMLSearchIterator<Identifier> {
     protected Identifier[] getNextBlock(Lexer lexer) throws Exception {
         final List<Identifier> identifiers = new ArrayList<Identifier>(10);
         boolean isInH2 = false;
-        while(lexer.getNext()) {
-            if(lexer.isTag() && !lexer.isEndTagOnly()) {
-                if(isInH2) {
-                    if(lexer.getLowercaseTagName().equals("a") && !lexer.getAttributes().containsKey("id")) {
+        while (lexer.getNext()) {
+            if (lexer.isTag() && !lexer.isEndTagOnly()) {
+                if (isInH2) {
+                    if (lexer.getLowercaseTagName().equals("a") && !lexer.getAttributes().containsKey("id")) {
                         final String partHref = lexer.getAttributes().get("href").substring(7);
                         identifiers.add(new SimpleIdentifier(Integer.parseInt(partHref.substring(0, partHref.indexOf('/')))));
                         isInH2 = false;
                     }
-                } else if(lexer.getLowercaseTagName().equals("h2")) {
+                } else if (lexer.getLowercaseTagName().equals("h2")) {
                     isInH2 = true;
                 }
             }

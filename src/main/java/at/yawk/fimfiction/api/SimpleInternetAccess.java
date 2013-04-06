@@ -10,7 +10,7 @@ import java.net.URLConnection;
  * @author Yawkat
  */
 public class SimpleInternetAccess implements MatureInternetAccess {
-    private boolean              mature = true;
+    private boolean mature = true;
     private final InternetAccess parentAccess;
     
     public SimpleInternetAccess(InternetAccess parentAccess) {

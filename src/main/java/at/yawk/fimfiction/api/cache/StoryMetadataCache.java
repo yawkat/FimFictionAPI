@@ -21,10 +21,10 @@ import at.yawk.fimfiction.api.parsers.JSONMetaLoader;
  * 
  */
 public class StoryMetadataCache {
-    private static final boolean      DEFAULT_ANONYMOUS       = false;
-    private static final int          DEFAULT_MAXIMUM_THREADS = 5;
+    private static final boolean DEFAULT_ANONYMOUS = false;
+    private static final int DEFAULT_MAXIMUM_THREADS = 5;
     
-    private static StoryMetadataCache currentInstance         = null;
+    private static StoryMetadataCache currentInstance = null;
     
     /**
      * @return The current instance or <code>null</code> if none is set yet.
@@ -56,9 +56,9 @@ public class StoryMetadataCache {
     }
     
     private final Map<Identifier, JSONStoryMeta> metadata = new HashMap<Identifier, JSONStoryMeta>();
-    private final InternetAccess                 internet;
+    private final InternetAccess internet;
     
-    private final Executor                       downloader;
+    private final Executor downloader;
     
     /**
      * @param internet
@@ -112,7 +112,7 @@ public class StoryMetadataCache {
      * @return The metadata
      */
     public JSONStoryMeta getFinalStoryMeta(Identifier id) {
-        if(!metadata.containsKey(id))
+        if (!metadata.containsKey(id))
             updateStoryMeta(id);
         return metadata.get(id);
     }
@@ -126,8 +126,8 @@ public class StoryMetadataCache {
      * @return The metadata or <code>null</code> if it has not been loaded yet.
      */
     public JSONStoryMeta getStoryMetaAsync(Identifier id) {
-        if(metadata.get(id) == null) {
-            if(!metadata.containsKey(id))
+        if (metadata.get(id) == null) {
+            if (!metadata.containsKey(id))
                 updateStoryMetaAsync(id);
             return EmptyStory.instance();
         } else
@@ -159,9 +159,9 @@ public class StoryMetadataCache {
     public void updateStoryMeta(Identifier id) {
         try {
             metadata.put(id, JSONMetaLoader.getStoryMeta(id, internet));
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-        } catch(ParseException e) {
+        } catch (ParseException e) {
             e.printStackTrace();
         }
     }

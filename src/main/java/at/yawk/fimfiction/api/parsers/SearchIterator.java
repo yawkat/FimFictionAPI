@@ -11,13 +11,13 @@ import at.yawk.fimfiction.api.InternetAccess;
 import at.yawk.fimfiction.api.URLs;
 
 abstract class SearchIterator<S extends Identifier> implements Iterator<S> {
-    private final String         request;
+    private final String request;
     private final InternetAccess internet;
     
-    private int                  currentIndex   = 0;
-    private S[]                  currentBlock   = null;
-    private int                  currentPage    = 1;
-    private int                  lastPageLength = 0;
+    private int currentIndex = 0;
+    private S[] currentBlock = null;
+    private int currentPage = 1;
+    private int lastPageLength = 0;
     
     public SearchIterator(String request, InternetAccess internet) {
         this.request = URLs.SEARCH_BASE + request + "&page=";
@@ -26,7 +26,7 @@ abstract class SearchIterator<S extends Identifier> implements Iterator<S> {
     
     @Override
     public boolean hasNext() {
-        if(currentBlock == null || currentIndex >= currentBlock.length)
+        if (currentBlock == null || currentIndex >= currentBlock.length)
             return readNextBlock();
         else
             return true;
@@ -34,7 +34,7 @@ abstract class SearchIterator<S extends Identifier> implements Iterator<S> {
     
     @Override
     public S next() {
-        if(hasNext())
+        if (hasNext())
             return currentBlock[currentIndex++];
         else
             throw new NoSuchElementException();
@@ -46,14 +46,14 @@ abstract class SearchIterator<S extends Identifier> implements Iterator<S> {
     }
     
     private boolean readNextBlock() {
-        if(currentBlock == null || currentBlock.length >= lastPageLength) {
+        if (currentBlock == null || currentBlock.length >= lastPageLength) {
             try {
                 currentBlock = getNextBlock(internet.connect(new URL(request + currentPage)));
                 currentPage++;
                 currentIndex = 0;
                 lastPageLength = currentBlock.length;
                 return lastPageLength > 0;
-            } catch(IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }

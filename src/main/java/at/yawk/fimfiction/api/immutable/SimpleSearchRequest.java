@@ -17,18 +17,18 @@ import at.yawk.fimfiction.api.SearchRequest;
  * 
  */
 public class SimpleSearchRequest implements SearchRequest {
-    private final String                  searchTerm;
-    private final SearchOrder             searchOrder;
-    private final Map<Category, Boolean>  categories;
-    private final ContentRating           contentRating;
-    private final MatureCategory          matureCategory;
-    private final boolean                 completed;
-    private final Integer                 minimumWords;
-    private final Integer                 maximumWords;
+    private final String searchTerm;
+    private final SearchOrder searchOrder;
+    private final Map<Category, Boolean> categories;
+    private final ContentRating contentRating;
+    private final MatureCategory matureCategory;
+    private final boolean completed;
+    private final Integer minimumWords;
+    private final Integer maximumWords;
     private final Map<Character, Boolean> characters;
-    private final boolean                 unread;
-    private final boolean                 favorite;
-    private final boolean                 readLater;
+    private final boolean unread;
+    private final boolean favorite;
+    private final boolean readLater;
     
     public SimpleSearchRequest(String searchTerm, SearchOrder searchOrder, Map<Category, Boolean> categories, ContentRating contentRating, MatureCategory matureCategory, boolean completed, Integer minimumWords, Integer maximumWords, Map<Character, Boolean> characters, boolean unread, boolean favorite, boolean readLater) {
         this.searchTerm = searchTerm;

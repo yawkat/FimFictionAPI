@@ -17,18 +17,18 @@ import at.yawk.fimfiction.api.immutable.ImmutableHelper;
  * @author Yawkat
  */
 public class SearchRequestFactory implements SearchRequest {
-    private String                  searchTerm     = "";
-    private SearchOrder             searchOrder    = SearchOrder.FIRST_POSTED_DATE;
-    private Map<Category, Boolean>  categories     = new HashMap<Category, Boolean>();
-    private ContentRating           contentRating  = ContentRating.ALL;
-    private MatureCategory          matureCategory = MatureCategory.ALL;
-    private boolean                 completed      = false;
-    private Integer                 minimumWords   = null;
-    private Integer                 maximumWords   = null;
-    private Map<Character, Boolean> characters     = new HashMap<Character, Boolean>();
-    private boolean                 unread         = false;
-    private boolean                 favorite       = false;
-    private boolean                 readLater      = false;
+    private String searchTerm = "";
+    private SearchOrder searchOrder = SearchOrder.FIRST_POSTED_DATE;
+    private Map<Category, Boolean> categories = new HashMap<Category, Boolean>();
+    private ContentRating contentRating = ContentRating.ALL;
+    private MatureCategory matureCategory = MatureCategory.ALL;
+    private boolean completed = false;
+    private Integer minimumWords = null;
+    private Integer maximumWords = null;
+    private Map<Character, Boolean> characters = new HashMap<Character, Boolean>();
+    private boolean unread = false;
+    private boolean favorite = false;
+    private boolean readLater = false;
     
     public String getSearchTerm() {
         return searchTerm;

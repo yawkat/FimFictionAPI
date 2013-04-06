@@ -15,7 +15,7 @@ abstract class XMLSearchIterator<S extends Identifier> extends SearchIterator<S>
     protected S[] getNextBlock(URLConnection url) {
         try {
             return getNextBlock(new Lexer(url));
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;

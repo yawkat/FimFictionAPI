@@ -96,20 +96,20 @@ public enum Character {
     ORIGINAL_CHARACTER(49, "Original Character", "http://www.fimfiction-static.net/images/characters/oc.png"),
     OTHER(62, "Other", "http://www.fimfiction-static.net/images/characters/other.png");
     
-    private final byte   id;
+    private final byte id;
     private final String displayName;
     private final String imageLocation;
-    private final byte   imageWidth;
+    private final byte imageWidth;
     
     private Character(final int id, final String displayName, final String imageUrl) {
         this(id, displayName, imageUrl, 32);
     }
     
     private Character(final int id, final String displayName, final String imageLocation, final int imageWidth) {
-        this.id = (byte)id;
+        this.id = (byte) id;
         this.displayName = displayName;
         this.imageLocation = imageLocation;
-        this.imageWidth = (byte)imageWidth;
+        this.imageWidth = (byte) imageWidth;
     }
     
     /**

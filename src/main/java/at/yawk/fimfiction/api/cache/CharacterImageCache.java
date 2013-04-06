@@ -22,10 +22,10 @@ import at.yawk.fimfiction.api.InternetAccess;
  * 
  */
 public class CharacterImageCache {
-    private static final boolean       DEFAULT_ANONYMOUS       = false;
-    private static final int           DEFAULT_MAXIMUM_THREADS = 5;
+    private static final boolean DEFAULT_ANONYMOUS = false;
+    private static final int DEFAULT_MAXIMUM_THREADS = 5;
     
-    private static CharacterImageCache currentInstance         = null;
+    private static CharacterImageCache currentInstance = null;
     
     /**
      * Get the current instance
@@ -67,9 +67,9 @@ public class CharacterImageCache {
     }
     
     private final Map<Character, BufferedImage> images = new EnumMap<Character, BufferedImage>(Character.class);
-    private final InternetAccess                internet;
+    private final InternetAccess internet;
     
-    private final Executor                      downloader;
+    private final Executor downloader;
     
     /**
      * @param internet
@@ -83,7 +83,7 @@ public class CharacterImageCache {
     public CharacterImageCache(InternetAccess internet, int maximumThreads, boolean anonymous) {
         this.internet = internet;
         downloader = Executors.newFixedThreadPool(maximumThreads);
-        if(!anonymous)
+        if (!anonymous)
             currentInstance = this;
     }
     
@@ -123,7 +123,7 @@ public class CharacterImageCache {
      *         yet.
      */
     public BufferedImage getImage(Character character) {
-        if(!images.containsKey(character))
+        if (!images.containsKey(character))
             updateCharacter(character);
         return images.get(character);
     }
@@ -141,7 +141,7 @@ public class CharacterImageCache {
             public void run() {
                 try {
                     images.put(character, ImageIO.read(internet.connect(new URL(character.getImageLocation())).getInputStream()));
-                } catch(IOException e) {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
