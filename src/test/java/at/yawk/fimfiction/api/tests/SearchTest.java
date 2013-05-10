@@ -19,6 +19,9 @@ public class SearchTest {
     public void trySearchIdentifier() {
         int counter = 0;
         for(Identifier i : new IDSearchIterable(new SearchRequestFactory().setSearchOrder(SearchOrder.RATING), new SimpleInternetAccess())) {
+            if(i.getId() <= 0) {
+                TestCase.fail();
+            }
             if(counter++ >= 9) {
                 return;
             }
@@ -30,6 +33,9 @@ public class SearchTest {
     public void trySearchMeta() {
         int counter = 0;
         for(Identifier i : new MetaSearchIterable(new SearchRequestFactory().setSearchOrder(SearchOrder.RATING), new SimpleInternetAccess())) {
+            if(i.getId() <= 0) {
+                TestCase.fail();
+            }
             if(counter++ >= 9) {
                 return;
             }
