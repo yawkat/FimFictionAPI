@@ -194,7 +194,6 @@ public final class AccountActions {
     }
     
     private static void clear(InputStream is) throws IOException {
-        while (is.read() >= 0)
-            ;
+        while (is.read() >= 0);
     }
 }
