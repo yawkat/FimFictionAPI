@@ -4,15 +4,17 @@ An API of many functions of http://FIMFiction.net/.
 
 Dependencies:
 -------------
-- commons-lang-2.6
-- htmllexer-2.1
 - json-simple-1.1.1
-- jsoup-1.6.3
-
-All of them are on maven.
-
-I am trying to remove most dependencies right now. HTML parsing has mostly been replaced by my own parser, YXML (https://github.com/yawkat/YXML). The lexer is needed too.
+- JUnit (for testing)
+- YXML-1.0
 
 Code Style:
 -----------
-Use 4 spaces instead of tabs.
+- Use [Oracle Code Conventions](http://www.oracle.com/technetwork/java/codeconv-138413.html)
+- Do not wrap after 80 characters
+- Always wrap arrays and enums if they are longer than 80 characters
+- Do not use tabs. Use four spaces for every indentation level (see code conventions)
+- Indent empty lines
+- Do not wrap empty method or class declarations or empty blocks
+- Always use blocks for if, for and while
+- All variables, arguments and method return types are to be marked using the @Nullable annotation from Google Guava if they can contain null in a valid state
