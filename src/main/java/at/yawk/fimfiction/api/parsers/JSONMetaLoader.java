@@ -34,7 +34,11 @@ public class JSONMetaLoader {
         factory.setTitle(getWithDefault(story, "title", ""));
         factory.setShortDescription(getWithDefault(story, "short_description", ""));
         factory.setDescription(getWithDefault(story, "description", ""));
-        factory.setModificationDate(new Date(getWithDefault(story, "date_modified", 0L)));
+        try {
+            factory.setModificationDate(new Date(Long.parseLong(getWithDefault(story, "date_modified", ""))));
+        } catch(NumberFormatException e) {
+            factory.setModificationDate(new Date(0));
+        };
         factory.setImageLocation(getWithDefault(story, "image", ""));
         factory.setMaximumChapterViews(getWithDefault(story, "views", 0L).intValue());
         factory.setTotalViews(getWithDefault(story, "total_views", 0L).intValue());

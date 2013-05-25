@@ -6,6 +6,4 @@ package at.yawk.fimfiction.api;
  * @author Yawkat
  * 
  */
-public interface StoryMeta extends VisibleStoryMeta, JSONStoryMeta {
-    
-}
+public interface StoryMeta extends VisibleStoryMeta, JSONStoryMeta {}
