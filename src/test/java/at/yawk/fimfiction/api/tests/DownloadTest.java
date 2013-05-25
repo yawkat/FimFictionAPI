@@ -18,8 +18,7 @@ public class DownloadTest {
     public void downloadStoryEpub() throws IOException {
         final ZipInputStream zipInputStream = new ZipInputStream(Downloader.downloadStory(new SimpleIdentifier(StoryExample.STORY_ID), DownloadType.EPUB, new SimpleInternetAccess()));
         try {
-            while(zipInputStream.getNextEntry() != null)
-                ;
+            while (zipInputStream.getNextEntry() != null);
         } finally {
             zipInputStream.close();
         }
