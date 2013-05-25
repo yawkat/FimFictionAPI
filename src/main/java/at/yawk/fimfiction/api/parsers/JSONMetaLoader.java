@@ -35,10 +35,10 @@ public class JSONMetaLoader {
         factory.setShortDescription(getWithDefault(story, "short_description", ""));
         factory.setDescription(getWithDefault(story, "description", ""));
         try {
-            factory.setModificationDate(new Date(Long.parseLong(getWithDefault(story, "date_modified", ""))));
-        } catch(NumberFormatException e) {
+            factory.setModificationDate(new Date(getWithDefault(story, "date_modified", 0L)));
+        } catch (Exception e) {
             factory.setModificationDate(new Date(0));
-        };
+        }
         factory.setImageLocation(getWithDefault(story, "image", ""));
         factory.setMaximumChapterViews(getWithDefault(story, "views", 0L).intValue());
         factory.setTotalViews(getWithDefault(story, "total_views", 0L).intValue());
@@ -54,8 +54,7 @@ public class JSONMetaLoader {
                 if ((Boolean) jc.get(c.getName()))
                     categories.add(c);
             }
-        } catch (Exception e) {
-        }
+        } catch (Exception e) {}
         factory.setCategories(categories.toArray(new Category[categories.size()]));
         factory.setLikes(getWithDefault(story, "likes", 0L).intValue());
         factory.setDislikes(getWithDefault(story, "dislikes", 0L).intValue());
@@ -66,13 +65,11 @@ public class JSONMetaLoader {
                 final JSONObject jo = (JSONObject) o;
                 chapters.add(new SimpleChapter(getWithDefault(jo, "id", 0L).intValue(), getWithDefault(jo, "title", ""), getWithDefault(jo, "words", 0L).intValue(), getWithDefault(jo, "views", 0L).intValue(), new Date(getWithDefault(story, "date_modified", 0L))));
             }
-        } catch (Exception e) {
-        }
+        } catch (Exception e) {}
         try {
             final JSONObject ja = (JSONObject) story.get("author");
             factory.setAuthor(new SimpleAuthor(Integer.parseInt(getWithDefault(ja, "id", "0")), getWithDefault(ja, "name", "")));
-        } catch (Exception e) {
-        }
+        } catch (Exception e) {}
         factory.setChapters(chapters.toArray(new Chapter[chapters.size()]));
         return factory;
     }
