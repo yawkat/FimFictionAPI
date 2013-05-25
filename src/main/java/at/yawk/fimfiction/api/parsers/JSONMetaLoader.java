@@ -35,7 +35,7 @@ public class JSONMetaLoader {
         factory.setShortDescription(getWithDefault(story, "short_description", ""));
         factory.setDescription(getWithDefault(story, "description", ""));
         try {
-            factory.setModificationDate(new Date(getWithDefault(story, "date_modified", 0L)));
+            factory.setModificationDate(new Date(getWithDefault(story, "date_modified", 0L) * 1000L));
         } catch (Exception e) {
             factory.setModificationDate(new Date(0));
         }
