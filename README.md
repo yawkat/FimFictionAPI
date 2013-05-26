@@ -2,13 +2,15 @@ FimFictionAPI
 =============
 An API of many functions of http://FIMFiction.net/.
 
-Dependencies:
+You can grab binary downloads at [my Jenkins](http://ci.yawk.at/job/FimFictionAPI).
+
+Dependencies
 -------------
 - json-simple-1.1.1
 - JUnit (for testing)
 - YXML-1.0
 
-Code Style:
+Code Style
 -----------
 - Use [Oracle Code Conventions](http://www.oracle.com/technetwork/java/codeconv-138413.html)
 - Do not wrap after 80 characters
