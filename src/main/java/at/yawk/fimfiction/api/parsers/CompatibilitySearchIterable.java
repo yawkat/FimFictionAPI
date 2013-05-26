@@ -12,6 +12,7 @@ import at.yawk.fimfiction.api.immutable.SimpleStoryAccess;
 @SuppressWarnings("rawtypes")
 public class CompatibilitySearchIterable extends SearchIterable<StoryAccess> {
     private boolean useIdSearch = false;
+    private boolean asyncIdSearch = false;
     
     public CompatibilitySearchIterable(SearchRequest request, InternetAccess internet) {
         super(request, internet);
@@ -23,6 +24,14 @@ public class CompatibilitySearchIterable extends SearchIterable<StoryAccess> {
     
     public void setUseIdSearch(boolean useIdSearch) {
         this.useIdSearch = useIdSearch;
+    }
+    
+    public boolean isAsyncIdSearch() {
+        return asyncIdSearch;
+    }
+    
+    public void setAsyncIdSearch(boolean asyncIdSearch) {
+        this.asyncIdSearch = asyncIdSearch;
     }
     
     @SuppressWarnings("unchecked")
@@ -39,10 +48,40 @@ public class CompatibilitySearchIterable extends SearchIterable<StoryAccess> {
                 @Override
                 public StoryAccess<JSONStoryMeta> next() {
                     final Identifier id = i.next();
-                    try {
-                        return new SimpleStoryAccess<JSONStoryMeta>(id, JSONMetaLoader.getStoryMeta(id, getInternet()));
-                    } catch (Exception e) {
-                        throw new Error(e);
+                    if (asyncIdSearch) {
+                        return new StoryAccess<JSONStoryMeta>() {
+                            private JSONStoryMeta meta;
+                            
+                            @Override
+                            public int compareTo(Identifier arg0) {
+                                return getId() - arg0.getId();
+                            }
+                            
+                            @Override
+                            public int getId() {
+                                return id.getId();
+                            }
+                            
+                            @Override
+                            public JSONStoryMeta getMeta() {
+                                try {
+                                    return meta == null ? meta = JSONMetaLoader.getStoryMeta(id, getInternet()) : meta;
+                                } catch (Exception e) {
+                                    throw new Error(e);
+                                }
+                            }
+                            
+                            @Override
+                            public Identifier getIdentifier() {
+                                return id;
+                            }
+                        };
+                    } else {
+                        try {
+                            return new SimpleStoryAccess<JSONStoryMeta>(id, JSONMetaLoader.getStoryMeta(id, getInternet()));
+                        } catch (Exception e) {
+                            throw new Error(e);
+                        }
                     }
                 }
                 
