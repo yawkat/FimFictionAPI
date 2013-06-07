@@ -31,6 +31,6 @@ public class SimpleIdentifier implements Identifier {
     
     @Override
     public int compareTo(Identifier o) {
-        return Integer.compare(this.getId(), o.getId());
+        return this.getId() - o.getId();
     }
 }
