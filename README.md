@@ -1,3 +1,5 @@
+Note: This library is deprecated and is no longer supported. Use the faster [FimFiction-Java](https://github.com/yawkat/FimFiction-Java) instead.
+
 FimFictionAPI
 =============
 An API of many functions of http://FIMFiction.net/.
